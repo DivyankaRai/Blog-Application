@@ -19,7 +19,7 @@ export const Api_notification_messages = {
     },
     networkError:{
         title:"Error",
-        message:"unacle to connect with the server. Please chcek internet connectivity and try again later."
+        message:"unable to connect with the server. Please checck  the internet connectivity and try again later."
     }
 }
 
