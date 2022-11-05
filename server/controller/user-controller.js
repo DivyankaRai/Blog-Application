@@ -1,16 +1,13 @@
-
-
-import { response } from "express"
+// import express from "express"
 import User from "../model/user.js"
 
-export const signupUser = async (req,response)=>{
+export const signupUser = async (request,response)=>{
     try {
-        const user = req.body
+        const user = request.body
         const newUser = new User(user)
         await newUser.save()
-
         return response.status(200).json({msg:"signup successfull"})
     } catch (error) {
-        return response.status(500)._construct({msg:"error while signup the user"})
+        return response.status(500).json({msg:"error while signup the user"})
     }
 }
