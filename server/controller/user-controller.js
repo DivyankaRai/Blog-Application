@@ -1,4 +1,4 @@
-// import express from "express"
+
 import User from "../model/user.js"
 
 export const signupUser = async (request,response)=>{
@@ -8,6 +8,6 @@ export const signupUser = async (request,response)=>{
         await newUser.save()
         return response.status(200).json({msg:"signup successfull"})
     } catch (error) {
-        return response.status(500).json({msg:"error while signup the user"})
+        return response.status(500).json({msg:"error while signup the user", error})
     }
 }

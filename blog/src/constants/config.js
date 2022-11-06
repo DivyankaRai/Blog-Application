@@ -15,7 +15,7 @@ export const Api_notification_messages = {
     },
     requestFailure:{
         title:"Error",
-        message:"An error occured while parsing rrequest data."
+        message:"An error occured while parsing request data."
     },
     networkError:{
         title:"Error",
