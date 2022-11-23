@@ -40,24 +40,25 @@ const signupInitialValues = {
 
 const Login = () => {
 
-    const [account, setAccount] = useState('login')
-    const [signupval, setSignupVal] = useState(signupInitialValues)
+    const [account, toggleAccount] = useState('login')
+    const [signup, setSignup] = useState(signupInitialValues)
     const [error,setError] = useState('')
 
-    const togglebtn = () =>{
-        account === 'signup' ? setAccount('login'): setAccount('signup')
+    const toggleSignup = () =>{
+        account === 'signup' ? toggleAccount('login'): toggleAccount('signup')
     }
     const onInputChange = (e) =>{
         console.log(e.target.value);
-        setSignupVal({...signupval, [e.target.name]: e.target.value})
+        setSignup({...signup, [e.target.name]: e.target.value})
     }
+    // ********************* signup use*******************
 
     const signUpUser = async()=>{
-       let response = await API.userSignup(signupval)
+       let response = await API.userSignup(signup)
        if(response.isSuccess){
         setError('')
-            setSignupVal(signupInitialValues)
-            setAccount('login')
+            setSignup(signupInitialValues)
+            toggleAccount('login')
        }else{
             setError('something went wrong! Please try again later',error)
        }
@@ -73,7 +74,7 @@ const Login = () => {
                     <TextField variant="standard" label="Enter password" />
                     <LoginBtn variant='contained'>Login</LoginBtn>
                     <Typography style={{textAlign: `center`}}>Or</Typography>
-                    <SignupBtn onClick={()=> togglebtn()}>Create an account</SignupBtn>
+                    <SignupBtn onClick={()=> toggleSignup()}>Create an account</SignupBtn>
                 </Wrapper>
             :
             <Wrapper>
@@ -83,7 +84,7 @@ const Login = () => {
                 {error && <Typography>{error}</Typography>}
                 <SignupBtn onClick={()=> signUpUser()}>SignUp</SignupBtn>
                 <Typography style={{textAlign: `center`}}>Or</Typography>
-                <LoginBtn onClick={()=> togglebtn()} variant='contained'>Already have an account</LoginBtn>
+                <LoginBtn onClick={()=> toggleSignup()} variant='contained'>Already have an account</LoginBtn>
             </Wrapper>
         }
     </Comp>
